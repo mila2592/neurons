@@ -10,10 +10,11 @@
 
 using namespace std;
 int sc=500;
-int t,tc=0;
+int t,tc=0,tc1=400;
 float con_probability = 0.1;
 double h     = 0.5; 	  // временной шаг интегрирования
-int   Tsim  = 5000/h; // время симуляции в дискретных отсчетах
+int   Tsim  = 1000/h; // время симуляции в дискретных отсчетах
+int Tmax=Tsim;
 //const int   Nex  = 200; 	  // Количество возбуждающих (excitatory) нейронов
 //const int   Ninh  = 50;  	  // Количество тормозных (inhibitory) нейронов
 
@@ -72,6 +73,26 @@ double ai = 0.08f;
 double bi = 0.35f;
 double ci = -60.0f; // значение мембранного потенциала до которого он сбрасывается после спайка
 double di = 10.0f;
+
+
+////берсты!!!!!!!!
+//float a		  = 0.031f;
+//float b		  = 0.5f;
+//float c		  = -28.0f; // значение мембранного потенциала до которого он сбрасываеться после спайка
+//float d 	  = 90.0f;
+
+
+
+//double ae = 0.031f;
+//double be = 0.5f;
+//double ce = -28.0f; // значение мембранного потенциала до которого он сбрасывается после спайка
+//double de =  90.0f;
+
+
+//double ai = 0.031f;
+//double bi = 0.5f;
+//double ci = -28.0f; // значение мембранного потенциала до которого он сбрасывается после спайка
+//double di = 90.0f;
 
 int spikes=0;
 
@@ -1146,6 +1167,29 @@ void neur::integrate ()
     {
         lay[20].Iex = 0;
 
+
+    }
+
+
+
+    if(t==tc1)
+    {
+        tc1=t+700;
+        //                for(int i=0;i<Nex/2;i++)
+        //                    lay[i].Iex = 0;
+
+        //                for(int i=0;i<Nex1/2;i++)
+        //                    lay[i].Iex = 0;
+
+        //                    for(int i=0;i<Nex2/2+Nex1;i++)
+
+           lay[80].Iex = 700;
+
+    }
+
+    if(t==tc1-300)
+    {
+           lay[80].Iex = 0;
     }
 
     //            if(t==4000)
@@ -1187,7 +1231,7 @@ void neur::drawFiringNeur()
 
         QProcess process1(this);
 
-        process1.start ("cmd /c python rastr.py \n");
+        process1.start ("cmd /c python ../rastr.py \n");
         process1.waitForFinished(5000);
 
         for(int i=0;i<Nneur;i++)
@@ -1256,7 +1300,7 @@ void neur::startIntegrate()
 
     }
 
-    Tsim=5000/h;
+    Tsim=Tmax;
     while(t<Tsim)
     {
         integrate();
@@ -1287,6 +1331,8 @@ void neur::startIntegrate()
 
 
         //            cout<<"код выполнялся "<<t.elapsed()<<endl;
+
+         stop_id=1;
     }
 }
 void neur::newLay()
@@ -1301,3 +1347,8 @@ void neur::stopIntegrate()
     stop_id=1;
     //    t=tmp;
 }
+ void neur::setMaxTime()
+ {
+ Tmax  = max_time->value()/h;
+
+ }
