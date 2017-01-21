@@ -1,0 +1,11 @@
+#exclude everything contained in release/ and debug/ catalogs, whole logs/ directory and other stuff.
+/logs/
+/release/*
+/debug/*
+/moc/*
+/obj/*
+/ui_generated/*
+*.user
+*.o
+*.Debug
+*.Release

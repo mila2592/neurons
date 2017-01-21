@@ -9,30 +9,33 @@ QT       += core gui
 TARGET = neur2
 TEMPLATE = app
 
+# binary files destination
+DESTDIR = build/
+
+# Metaobject compiller files
+MOC_DIR = moc/
+
+# Object files
+OBJECTS_DIR = obj/
+
+# ui header files
+UI_DIR = ui_generated/
+
+INCLUDEPATH += ui_generated/
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    functions.cpp
+           mainwindow.cpp \
+           functions.cpp
 
 HEADERS  += mainwindow.h
-INCLUDEPATH +=c:/qwt-6.1.3/src
 
-LIBS +=c:/qwt-6.1.3/lib/libqwtd.a
-LIBS +=c:/qwt-6.1.3/lib/libqwt.a
+QWT_ROOT = c:/qwt-6.1.3
 
-INCLUDEPATH +=c:/Python27/include
+INCLUDEPATH += $${QWT_ROOT}/src
 
-
-EIGEN_PATH  = C:/eigen-eigen-f562a193118d
-INCLUDEPATH += $${EIGEN_PATH}
-
-
-
-
-
-
-
-
-
-
-
+win32{
+    LIBS += $${QWT_ROOT}/lib/libqwtd.a
+}
+unix{
+    LIBS += $${QWT_ROOT}/lib/libqwt.so.5.2.1
+}
