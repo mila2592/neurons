@@ -121,7 +121,7 @@ public:
     QImage *img,*img1;
 
     QPushButton *conns_btn,*start_btn,*stop_btn,*newLay_btn;
-    QLabel *label1,*label2,*time_lbl;
+    QLabel *label1,*label2,*time_lbl,*max_time_lbl;
 
     QwtPlot *plot1,*plot2;
     QwtPlotCurve *curve1;
@@ -130,7 +130,7 @@ public:
     QPainter *p1;
 
     QLCDNumber *time_lcd;
-    QSpinBox *max_time;
+ QSpinBox *max_time;
     void paintEvent(QPaintEvent* );
 private slots:
     void drawFiringNeur();
@@ -138,7 +138,7 @@ private slots:
     void startIntegrate();
     void stopIntegrate();
     void newLay();
-    void setMaxTime();
+        void setMaxTime();
 };
 
 #endif // MAINWINDOW_H
