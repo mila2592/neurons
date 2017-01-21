@@ -130,7 +130,7 @@ public:
     QPainter *p1;
 
     QLCDNumber *time_lcd;
-
+    QSpinBox *max_time;
     void paintEvent(QPaintEvent* );
 private slots:
     void drawFiringNeur();
@@ -138,6 +138,7 @@ private slots:
     void startIntegrate();
     void stopIntegrate();
     void newLay();
+    void setMaxTime();
 };
 
 #endif // MAINWINDOW_H
