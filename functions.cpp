@@ -7,8 +7,6 @@
 #include <cmath>
 #include "QTime"
 
-QThread thread1;
-    QThread thread2;
 
 using namespace std;
 int sc=500;
@@ -28,6 +26,7 @@ int   Ncon;// Количество сязей,
 
 
 int   num_con;
+int stop_id=0;
 double psc_excxpire_time = 4.0f; // характерное вермя спадания постсинаптического тока, мс
 
 double minWee = 1300.0f; // веса, размерность пкА
@@ -1245,6 +1244,19 @@ void neur::drawConns()
 
 void neur::startIntegrate()
 {
+
+    if(stop_id==1)
+    {
+        stop_id==0;
+//        char hg[100];
+
+//        ofstream res_file("rastr0.csv", ios_base::app); // открываем файл для добавления информации к концу файла
+        res_file.open("rastr0.csv", ios_base::app); // открываем файл для добавления информации к концу файла
+         volt_file.open("voltages.txt", ios_base::app); // открываем файл для добавления информации к концу файла
+
+    }
+
+    Tsim=5000/h;
     while(t<Tsim)
     {
         integrate();
@@ -1266,7 +1278,7 @@ void neur::startIntegrate()
 
         QProcess process1(this);
 
-        process1.start ("cmd /c python rastr.py \n");
+        process1.start ("cmd /c python ../rastr.py \n");
         process1.waitForFinished(5000);
 
         for(int i=0;i<Nneur;i++)
@@ -1284,7 +1296,8 @@ void neur::newLay()
 }
 void neur::stopIntegrate()
 {
-//    int tmp=t;
+    //    int tmp=t;
     Tsim=t;
-//    t=tmp;
+    stop_id=1;
+    //    t=tmp;
 }
