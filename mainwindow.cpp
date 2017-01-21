@@ -178,6 +178,8 @@ neur::neur(QWidget *parent): QWidget(parent)
     label1=new QLabel("label1");
     label2=new QLabel("label2");
     time_lbl=new QLabel(tr("мс"));
+    max_time_lbl=new QLabel(tr("время \nинтегрирования, мс"));
+
 
     max_time= new QSpinBox;
     max_time->setRange(0,9999999999);
@@ -225,7 +227,8 @@ neur::neur(QWidget *parent): QWidget(parent)
     layout1->addWidget(conns_btn, 2, 1);
     layout1->addWidget(start_btn, 2, 2);
     layout1->addWidget(stop_btn, 3, 2);
-    layout1->addWidget(max_time, 3, 3);
+    layout1->addWidget(max_time, 4, 2);
+    layout1->addWidget(max_time_lbl, 4, 3);
     layout1->addWidget(newLay_btn, 2, 3);
     layout1->addWidget(sa, 3, 1);
 
