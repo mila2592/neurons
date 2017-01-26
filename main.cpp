@@ -1,19 +1,19 @@
-#include <QtGui/QApplication>
-#include "mainwindow.h"
+﻿#include <QtGui/QApplication>
+#include <QTextCodec>
+#include "core.h"
+//#include "neuronmainwidget.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    neur *wnd=new neur;
 
-    wnd->show();
-//    QMenuBar mb;
-//    QMenu* mu=new QMenu("&Menu");
-//    mu->addSeparator();
-//    mu->addAction("&exit",&a,SLOT(exx(bool)));
-//    mb.addMenu(mu);
-//    mb.show();
+    QTextCodec::setCodecForTr(QTextCodec::codecForName ("Windows-1251"));
 
+    Core::instance().init_core();
+    //NeuronMainWidget main_widget;
+    //main_widget.show();
+    //neur wnd;
+    //wnd.show();
 
     return a.exec();
 }

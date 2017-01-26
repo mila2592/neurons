@@ -1,13 +1,9 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2014-01-27T14:22:34
-#
-#-------------------------------------------------
-
 QT       += core gui
 
 TARGET = neur2
 TEMPLATE = app
+
+#QMAKE_CXXFLAGS += -std=c++11
 
 # binary files destination
 DESTDIR = build/
@@ -25,11 +21,18 @@ INCLUDEPATH += ui_generated/
 
 SOURCES += main.cpp\
            mainwindow.cpp \
-           functions.cpp
+           functions.cpp \
+           neuronmainwidget.cpp \
+           core.cpp \
+           neuronnet.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    neuron.h \
+    neuronmainwidget.h \
+    core.h \
+    neuronnet.h
 
-QWT_ROOT = c:/qwt-6.1.3
+QWT_ROOT = c:/QtSDK/qwt-6.1.3
 
 INCLUDEPATH += $${QWT_ROOT}/src
 
@@ -39,3 +42,6 @@ win32{
 unix{
     LIBS += $${QWT_ROOT}/lib/libqwt.so.5.2.1
 }
+
+FORMS += \
+    neuronmainwidget.ui
