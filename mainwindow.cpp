@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include "neuron.h"
+#include "neuronnet.h"
 #include <conio.h>
 #include <iostream>
 #include <math.h>
@@ -241,6 +243,100 @@ neur::neur(QWidget *parent): QWidget(parent)
     connect(newLay_btn, SIGNAL(clicked()), this, SLOT(newLay()));
     connect(max_time, SIGNAL(valueChanged(int)), this, SLOT(setMaxTime()));
 
+
+
+    //    Neuron n1('e');
+    //    Neuron n2('i');
+    //    Neuron n3;
+    //    Neuron n4('d');
+    //    n1.showPar();
+    //    n2.showPar();
+    //    n3.showPar();
+    //    n4.showPar();
+
+    NeuronNet net1;
+    net1.add_layer(200,25);
+
+    net1.add_layer(200,25);
+
+    //    net1.add_layer(15,7);
+
+    //    net1.add_layer(10,1);
+    //    net1.add_layer(12,5);
+    //    net1.add_layer(14,7);
+    //  int a=  net1.size(0);
+
+    cout<<net1.size_of_lay(0)<<endl;
+//    net1.connect_layers(0, 1);
+        net1.connect_layers(0, 0);
+    net1.tmp();
+    //    for(int i=0;i<4;i++)
+    //        net1.neuron_info(0,i);
+    //    cout<<"net1.size= "<<net1.size()<<endl;
+    //    cout<< "net1.neuron_layers[0]= "<<net1.neuron_layers[0].size()<<endl;
+    //    cout<< "net1.num_neurons_in_layers[0][1]= "<<net1.num_ex_in_lay(0)<<endl;
+    //    cout<< "net1.num_neurons_in_layers[0][1]= "<<net1.num_inh_in_lay(1)<<endl;
+
+
+    //    net1.connect_layers(0, 0);
+    //    net1.show_conns_for_lay(0,0);
+
+
+    //    net1.connect_layers(2, 3);
+    //    net1.connect_layers(0, 1);
+    //    net1.connect_layers(2, 3);
+
+    //    net1.show_conns_for_lay(2,3);
+
+
+
+    std::vector <std::vector <int> > post_neur;
+
+    for(int i=0;i<10;i++)
+    {
+        std::vector <int> vecc;
+        post_neur.push_back(vecc);
+    }
+    post_neur[0].push_back(1);
+    post_neur[0].push_back(2);
+    post_neur[0].push_back(3);
+
+
+    post_neur[9].push_back(1);
+    post_neur[9].push_back(2);
+    post_neur[9].push_back(3);
+
+
+
+    for(int i=0;i<post_neur[0].size();i++)
+        cout<<"dd= "<<post_neur[0][i]<<endl;
+
+
+    //    vector <int> vecInt(3,100); ///Создаем вектор из 3 элементов и заполняем его значением 100
+    //    vector <int>::iterator it;
+    //    it = vecInt.begin(); ///Итератор указывает на vec[0]
+
+    //    ///Вектор расширяется теперь до 4 элементов
+    //    vecInt.insert (it,200); ///И первым элементом записывается 200
+
+    //    ///Вектор расширяется теперь до 5 элементов
+    //    it = vecInt.begin() + 3;///Вектор указывает на 4 элемент (0-элемент+3-элемента)
+    //    vecInt.insert(it,300);///И четвертым элементом записывается 300
+    //    vecInt.insert(it+1,900);///Вектор расширяется теперь до 6 элементов и 5 элементом записывается 900
+
+
+    //    vector<std::vector<Neuron> > neur_vec;
+    //    neur_vec.push_back(std::vector<Neuron>(4));
+    //    neur_vec.push_back(std::vector<Neuron>(4));
+
+    //    cout<<"neur_vec.size= "<<neur_vec.size()<<endl;
+    //    cout<<"neur_vec[0].size= "<<neur_vec[0].size()<<endl;
+    //    neur_vec[0].size();
+    //    neur_vec[0][0].showPar();
+    //cout<<net1.neuron_layers.size()<<endl;
+
+    //    char ak = '0xffx0';
+    //    cout<<"ak= "<<ak<<endl;
     ////   createLay(100,30);
     //    createLay(Nex,Ninh);
     nmain();
