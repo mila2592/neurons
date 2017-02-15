@@ -978,13 +978,13 @@ void neur::nmain()
         char str[6] = "";
         char hg[100];
 
-        strcpy(hg,"rastr" );
+        strcpy(hg,"rastr1" );
         strcat(hg,itoa(ss,str,10));
         strcat(hg,".csv");
 
         res_file.open(hg);
 
-        strcpy(hg,"voltages" );
+        strcpy(hg,"voltages1" );
         strcat(hg,itoa(ss,str,10));
         strcat(hg,".txt");
 
