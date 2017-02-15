@@ -12,7 +12,7 @@ NeuronMainWidget::NeuronMainWidget(QWidget *parent) :
 
 NeuronMainWidget::~NeuronMainWidget()
 {
-    delete ui;    
+    delete ui;
 }
 
 void NeuronMainWidget::closeEvent(QCloseEvent *)
