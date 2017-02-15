@@ -24,15 +24,21 @@ SOURCES += main.cpp\
            functions.cpp \
            neuronmainwidget.cpp \
            core.cpp \
-           neuronnet.cpp
+           neuronnet.cpp \
+    connections.cpp \
+    neuron.cpp \
+    netmap.cpp
 
-HEADERS  += mainwindow.h \
-    neuron.h \
+HEADERS  += neuron.h \
+    mainwindow.h \
     neuronmainwidget.h \
     core.h \
-    neuronnet.h
+    neuronnet.h \
+    connections.h \
+    plasticity.h \
+    netmap.h
 
-QWT_ROOT = c:/QtSDK/qwt-6.1.3
+QWT_ROOT = c:/qwt-6.1.3
 
 INCLUDEPATH += $${QWT_ROOT}/src
 
@@ -45,3 +51,11 @@ unix{
 
 FORMS += \
     neuronmainwidget.ui
+
+
+
+
+
+
+
+
